@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: default
+  name: brige-deployment
+  labels:
+    app: brige-ware
+spec:
+  selector:
+    matchLabels:
+      app: brige-ware
+  template:
+    metadata:
+      labels:
+        app: brige-ware
+    spec:
+      containers:
+      - name: nginx
+        image: 183295409739.dkr.ecr.us-east-1.amazonaws.com/bridgeware-repo:latest
+        envFrom:
+          - configMapRef:
+             name: bridge-ware-configmap
+        ports:
+        - containerPort: 80
+
