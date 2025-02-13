@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: test-container
-        image: 183295409739.dkr.ecr.us-east-1.amazonaws.com/test-repo:latest
+        image: account-number.dkr.ecr.us-east-1.amazonaws.com/test-repo:latest
         ports:
         - containerPort: 80
 
