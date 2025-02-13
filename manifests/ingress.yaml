@@ -10,7 +10,6 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/success-codes: '200'
-  #  alb.ingress.kubernetes.io/healthcheck-path: /swagger/index.html
     alb.ingress.kubernetes.io/load-balancer-name: "test-dev-alb"
 spec:
   ingressClassName: alb
@@ -24,4 +23,11 @@ spec:
            service:
              name: test-service
              port:
-               number: 80 
+               number: 80
+       - path: /prometheus  # Prometheus UI Route
+         pathType: Prefix
+         backend:
+           service:
+             name: prometheus-service
+             port:
+               number: 9090
