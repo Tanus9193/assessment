@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   namespace: default
-  name: bridgeware-ingress
+  name: test-ingress
   annotations:
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:183295409739:certificate/34f4a8ca-f275-4936-a293-57b3766d1e89,arn:aws:acm:us-east-1:183295409739:certificate/1a2c2bb0-e177-4900-a580-5e6e73351037
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
@@ -11,17 +11,17 @@ metadata:
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/success-codes: '200'
   #  alb.ingress.kubernetes.io/healthcheck-path: /swagger/index.html
-    alb.ingress.kubernetes.io/load-balancer-name: "bridgeware-dev-alb"
+    alb.ingress.kubernetes.io/load-balancer-name: "test-dev-alb"
 spec:
   ingressClassName: alb
   rules:
-    - host: bsiresdev.com
+    - host: test.com
       http:
        paths:
        - path: /
          pathType: Prefix
          backend:
            service:
-             name: bridge-ware-service
+             name: test-service
              port:
                number: 80 
